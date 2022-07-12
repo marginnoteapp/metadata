@@ -180,6 +180,11 @@ export const saveProfile = (name: string, key: string, value: any) => {
       self.notebookProfile[name][key] = value
     } else {
       self.docProfile[name][key] = value
+      self.docmd5 &&
+        writeProfile({
+          range: Range.Doc,
+          docmd5: self.docmd5
+        })
     }
   } catch (err) {
     console.error(String(err))
@@ -198,7 +203,7 @@ const writeProfile2Card = (node: MbBookNote) => {
     node.excerptText = `${lang.profile_manage.prohibit}\nversion: ${
       Addon.version
     }\n${dateFormat(new Date())}`
-    node.noteTitle = `Metadata 配置`
+    node.noteTitle = `MetaData 配置`
     const { childNotes } = node
     if (!childNotes?.length) return
     const data = Base64.encode(

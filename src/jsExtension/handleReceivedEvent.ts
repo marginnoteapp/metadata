@@ -63,8 +63,19 @@ const onInputOver: EventHandler = sender => {
   if (!isThisWindow(sender)) return
   console.log("Input", "event")
   const { name, key, content } = sender.userInfo
-  saveProfile(name, key, content)
-  updateProfileTemp(key, content)
+  switch (key) {
+    case "pageOffset": {
+      const [a, b] = content.split(/\s*-\s*/).map(k => Number(k))
+      const offset = b ? String(a - b) : content
+      saveProfile(name, key, offset)
+      updateProfileTemp(key, offset)
+      break
+    }
+    default: {
+      saveProfile(name, key, content)
+      updateProfileTemp(key, content)
+    }
+  }
   showHUD(content ? lang.input_saved : lang.input_clear)
 }
 

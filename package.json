@@ -8,16 +8,14 @@
     "dev": "tsx ./build.ts ",
     "zip": "cd ./dist && zip -qrm \"${npm_package_name}_v$npm_package_version.mnaddon\" *",
     "build": "NODE_ENV=production pnpm dev && pnpm zip",
-    "html:build": "cd ./src/fronted && pnpm build && pnpm build:t",
-    "html:dev": "cd ./src/fronted && pnpm dev",
-    "build:iPad": "pnpm build && airdrop ./dist/metadata*.mnaddon",
+    "build:iPad": "pnpm build && airdrop ./dist/\"$npm_package_name\"*.mnaddon",
     "lint:fix": "eslint . --fix --ext .ts",
     "lint": "eslint . --ext .ts",
     "prettier": "prettier --write .",
     "prepare": "husky install"
   },
   "lint-staged": {
-    "src/[!fronted]**/*.{js,jsx,ts,tsx,json}": [
+    "src/**/*.{js,jsx,ts,tsx,json}": [
       "prettier --write",
       "eslint --cache --fix",
       "git add"

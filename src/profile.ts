@@ -5,12 +5,24 @@ const globalProfilePreset = {
   addon: {
     panelControl: false,
     panelPosition: [0],
-    panelHeight: [1],
+    panelHeight: [1]
   }
 }
 
 // Each document has a independent profile
-const docProfilePreset = {}
+const docProfilePreset = {
+  addon: {
+    pageOffset: "0",
+    author: "",
+    publisher: "",
+    publicationDate: "",
+    publicationPlace: "",
+    type: [0],
+    otherInfo: "",
+    isbn: "",
+    doi: ""
+  }
+}
 
 const notebookProfilePreset = {}
 

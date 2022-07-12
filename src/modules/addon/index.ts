@@ -27,5 +27,63 @@ export default defineConfig({
       type: CellViewType.Switch,
       label: label.panle_control
     },
+    {
+      key: "type",
+      type: CellViewType.Select,
+      option: [
+        "期刊[J]",
+        "专著[M]",
+        "论文集[C]",
+        "学位论文[D]",
+        "专利[P]",
+        "技术标准[S]",
+        "报纸[N]",
+        "科技报告[R]"
+      ],
+      label: label.type
+    },
+    {
+      key: "isbn",
+      type: CellViewType.InlineInput,
+      label: "ISBN"
+    },
+    {
+      key: "doi",
+      type: CellViewType.InlineInput,
+      label: "DOI"
+    },
+    {
+      key: "author",
+      type: CellViewType.InlineInput,
+      label: label.author
+    },
+    {
+      key: "publisher",
+      type: CellViewType.InlineInput,
+      label: label.publisher
+    },
+    {
+      key: "publicationDate",
+      type: CellViewType.InlineInput,
+      label: label.publication_date
+    },
+    {
+      key: "publicationPlace",
+      type: CellViewType.InlineInput,
+      label: label.publication_place
+    },
+    {
+      key: "pageOffset",
+      type: CellViewType.InlineInput,
+      label: label.page_offset,
+      check({ input }) {
+        if (!/^[0-9\- ]*$/.test(input)) throw ""
+      }
+    },
+    {
+      key: "otherInfo",
+      type: CellViewType.Input,
+      help: label.other_info
+    }
   ]
 })
